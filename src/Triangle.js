@@ -74,17 +74,10 @@ function Triangle() {
           </label>
           <button type="submit"> Submit</button>
         </form>
-        <div className="display-message">
-          {message === "Equilateral" && (
-            <div className="response">
-              <div>
-                <p>Given sides</p>
-              </div>
-            </div>
-          )}
+        
         </div>
       </div>
-    </div>
+   
   );
 }
 export default Triangle;
