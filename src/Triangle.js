@@ -4,51 +4,88 @@ function Triangle() {
   const [numberX, setNumberX] = useState();
   const [numberY, setNumberY] = useState();
   const [numberZ, setNumberZ] = useState();
+  const [message, setMessage] = useState("Triangle result");
+
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
-  const result = (x, y, z) => {
-    if (x === y && y === z) {
-      return "It is Equilateral Triangle";
-    } else if (x === y || y === z || z === x) {
-      return "It is a Isosceles Triangle";
-    } else {
-      return "It is a Scalene";
+
+    if (
+      Number(numberX) === 0 &&
+      Number(numberY) === 0 &&
+      Number(numberZ) === 0
+    ) {
+      setMessage("Sides should not be Zero");
+      return;
+    }
+
+    if (Number(numberX) !== 0 && numberX === numberY && numberY === numberZ) {
+      setMessage("It is Equilateral Triangle");
+      return;
+    }
+    if (numberX === numberY || numberY === numberZ || numberZ === numberX) {
+      setMessage("It is a Isosceles Triangle");
+      return;
+    }
+    if (numberX !== numberY && numberY !== numberZ && numberZ !== numberX) {
+      setMessage("Scalene Triangle");
+      return;
     }
   };
+
   return (
-    <div className="triangle-container">
-      <div className="result">{result(numberX, numberY, numberZ)}</div>
-      <form className="input-container" onSubmit={handleSubmit}>
-        <label for="input">
-          X :
-          <input
-            className="text"
-            type="number"
-            value={numberX}
-            onChange={(e) => setNumberX(e.target.value)}
-          />
-        </label>
-        <label for="input">
-          Y :
-          <input
-            className="text"
-            type="number"
-            value={numberY}
-            onChange={(e) => setNumberY(e.target.value)}
-          />
-        </label>
-        <label>
-          Z :
-          <input
-            className="text"
-            type="number"
-            value={numberZ}
-            onChange={(e) => setNumberZ(e.target.value)}
-          />
-        </label>
-      </form>
+    <div>
+      <div className="triangle-container">
+        <div className="result">{message}</div>
+        <form className="input-container" onSubmit={handleSubmit}>
+          <h2>Enter the sides of the triangle</h2>
+          <br />
+          <label for="input">
+            X :
+            <input
+              className="text"
+              placeholder="Insert number"
+              type="number"
+              value={numberX}
+              required
+              onChange={(e) => setNumberX(e.target.value)}
+            />
+          </label>
+          <label for="input">
+            Y :
+            <input
+              className="text"
+              placeholder="Insert number"
+              type="number"
+              value={numberY}
+              required
+              onChange={(e) => setNumberY(e.target.value)}
+            />
+          </label>
+          <label>
+            Z :
+            <input
+              className="text"
+              placeholder="Insert number"
+              type="number"
+              value={numberZ}
+              required
+              onChange={(e) => setNumberZ(e.target.value)}
+            />
+          </label>
+          <button type="submit"> Submit</button>
+        </form>
+        <div className="display-message">
+          {message === "Equilateral" && (
+            <div className="response">
+              <div>
+                <p>Given sides</p>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
     </div>
   );
 }
 export default Triangle;
+
