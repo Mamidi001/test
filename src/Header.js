@@ -1,8 +1,5 @@
 import React from "react";
 
-{
-  /* This a header component and here we can navigate throught all main routes  */
-}
 const Header = () => {
   return (
     <nav>
