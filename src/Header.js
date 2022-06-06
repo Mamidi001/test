@@ -12,10 +12,10 @@ const Header = () => {
         className="header_logo"
       />
       <ul className="nav-links">
-        <a href="#">
+        <a href="https://www.nordea.dk/">
           <li>Home</li>{" "}
         </a>
-        <a href="#">
+        <a href="https://www.nordea.dk/privat/om-nordea.html">
           <li>AboutUs</li>{" "}
         </a>
       </ul>
